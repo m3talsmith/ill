@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html ng-app='AJSDirectives'>
+  <head>
+    <title>AngularJs Directives</title>
+  </head>
+  <body ng-controller='PeopleController'>
+    <address-book contacts='people'></address-book>
+
+    <script src='js/angular.min.js'></script>
+    <script>
+      var app = angular.module('AJSDirectives', []);
+      app.controller('PeopleController', function($scope){
+        $scope.people = [
+          {name: 'John Ceh', age: 13, bearded: false},
+          {name: 'Steve Young', age: 40, bearded: false},
+          {name: 'Michael Christenson II', age: 35, bearded: true}
+        ];
+      });
+
+      app.directive('addressBook', function() {
+        return {
+          scope: {
+            people: '=contacts'
+          },
+          restrict: 'E',
+          templateUrl: '/people.html'
+        };
+      });
+
+      app.directive('person', function() {
+        return {
+          scope: {
+            person: '=data'
+          },
+          restrict: 'E',
+          templateUrl: '/person.html'
+        };
+      });
+    </script>
+  </body>
+</html>
