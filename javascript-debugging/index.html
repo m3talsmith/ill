@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Javascript Debugging</title>
+	</head>
+	<body>
+		<div id='illing'>Illing it over here.</div>
+		<a href="" id="something">click me!</a>
+
+		<script>
+			function savePlaceholder (element) {
+				element.setAttribute('data-placeholder', element.innerHTML);
+			}
+
+			function usePlaceholder (element) {
+				// You can use debugger to force chrome into debug mode.
+				// debugger;
+				element.innerHTML = element.getAttribute('data-placeholder');
+			}
+
+			var illing = document.getElementById('illing');
+			illing.onclick = function () {
+				savePlaceholder(this);
+				this.innerHTML = 'Clicked, derp';
+				var that = this;
+				setTimeout(function() {usePlaceholder(that);}, 1000);
+			};
+
+			function doAjax() {
+				var xhr = new XMLHttpRequest;
+				xhr.open('GET', '/other.html', true);
+				xhr.send();
+				xhr.onload = function() {
+					var html = xhr.responseText;
+					document.getElementById('illing').innerHTML = html;
+				}
+				return false;
+			}
+			document.getElementById('something').onclick = doAjax;
+		</script>	
+	</body>
+</html>

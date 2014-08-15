@@ -1,0 +1,16 @@
+{
+  "name": "demistifying-routes-nodejs",
+  "version": "0.0.0",
+  "description": "fun times with routes",
+  "main": "index.js",
+  "scripts": {
+    "start": "./node_modules/.bin/nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "nodemon": "^1.0.15",
+    "connect": "^2.13.0"
+  }
+}
