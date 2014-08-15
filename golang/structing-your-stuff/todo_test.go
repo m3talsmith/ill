@@ -10,7 +10,13 @@ func TestNew (t *testing.T) {
   }
 }
 
-func TestAddItem (t *testing.T) {}
+func TestAddItem (t *testing.T) {
+  todo.AddItem("item 1")
+  if todo.Items[0] != "item 1" {
+    t.Errorf("Expected 'item 1', Got '%s'", todo.Items[0])
+  }
+}
+
 func TestEditItem (t *testing.T) {}
 func TestDeleteItem (t *testing.T) {}
 
